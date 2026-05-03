@@ -2,80 +2,103 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Kilka Image Generator</title>
+    <title>Kilka Image Lab — превращаем слова в картинки!</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba1 100%);
+            min-height: 100vh;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
         }
         h1 {
-            color: #333;
-            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 20px 0;
+        .description {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            background: #4CAF50;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background: #45a049;
-        }
-        #result {
-            margin-top: 20px;
-            text-align: center;
-        }
-        iframe {
+        .space-embed {
             width: 100%;
-            height: 600px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            height: 900px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 40px auto;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255,255,255,0.8);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Kilka Image Generator</h1>
-        <p>Генерируйте изображения с помощью кнопок ниже:</p>
-        
-        <div class="buttons">
-            <button onclick="generateIdea()">🤔 Килька думает</button>
-            <button onclick="enhancePrompt()">💬 Красноречивая кнопка</button>
-            <button onclick="generateFast()">🚀 Быстрый режим</button>
-            <button onclick="generateBalanced()">🚀 Сбалансированный</button>
-            <button onclick="generateQuality()">🚀 Высокое качество</button>
-        </div>
-        
-        <div id="result">
-            <!-- Здесь будет отображаться генератор -->
-            <iframe
-                src="https://huggingface.co/spaces/Kilkavv29/Kilka_image_lab_free_ai"
-                title="Image Generator"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-            ></iframe>
-        </div>
-    </div>
+        <header>
+            <h1>✨ Kilka Image Lab</h1>
+            <p>Превращаем слова в картинки!</p>
+        </header>
 
-    <script src="app.js"></script>
+        <div class="description">
+            <h2>Привет!</h2>
+            <p>Хочу поделиться с тобой крутым инструментом для творчества — Kilka Image Lab. Это персональный генератор изображений прямо в браузере: не нужно скачивать программы или разбираться в сложных настройках.</p>
+
+            <h3>Что умеет Kilka Image Lab?</h3>
+            <ul>
+                <li>Генерирует картинки по текстовому описанию — от реалистичных фото до фантастических миров.</li>
+                <li><strong>«Красноречивая кнопка» (💬)</strong> — улучшает ваш промт: добавляет детали, стилистику и технические параметры, чтобы картинка получилась ярче и детальнее.</li>
+                <li><strong>«Килька думает» (🤔)</strong> — генерирует готовую идею, если у вас нет вдохновения. Больше не нужно мучиться с формулировками!</li>
+            </ul>
+
+            <h3>Три режима генерации на выбор:</h3>
+            <ul>
+                <li><strong>Fast</strong> — быстрая генерация (10 шагов, 384×384 px). Идеально для быстрых набросков и идей.</li>
+                <li><strong>Balance</strong> — баланс качества и скорости (20 шагов, 512×512 px). Оптимальный вариант для большинства задач.</li>
+                <li><strong>Quality</strong> — высокое качество (30 шагов, 768×768 px). Для финальных работ с детальной проработкой.</li>
+            </ul>
+
+            <h3>Как использовать?</h3>
+            <ol>
+                <li>Введите описание изображения в поле ввода.</li>
+                <li>Нажмите «💬 Красноречивая кнопка», чтобы улучшить промт, или «🤔 Килька думает», чтобы получить случайную идею.</li>
+                <li>Выберите режим генерации.</li>
+                <li>Нажмите «🚀 Сгенерировать» и дождитесь результата.</li>
+            </ol>
+        </div>
+
+        <!-- Здесь будет встроен Gradio-интерфейс -->
+        <iframe
+            src="https://your-space-url.hf.space"
+            class="space-embed"
+            title="Kilka Image Lab"
+        ></iframe>
+
+        <footer>
+            <p>© 2024 Kilka Image Lab. Создано с ❤️ с использованием Stable Diffusion и Gradio.</p>
+        </footer>
+    </div>
 </body>
 </html>
