@@ -1,104 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <title>✨ Kilka Image Lab</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba1 100%);
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .description {
-            max-width: 800px;
-            margin: 0 auto 40px;
-            font-size: 1.1rem;
-            background: rgba(255,255,255,0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .space-embed {
-            width: 100%;
-            height: 900px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin: 40px auto;
-        }
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: rgba(255,255,255,0.8);
-        }
-    </style>
+<meta charset="UTF-8" />
+<title>✨ Kilka Image Lab</title>
+<style>
+  * {
+      box-sizing: border-box;
+  }
+  body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba1 100%);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+  }
+  h1 {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.5;
+      font-size: 1.2rem;
+  }
+  iframe {
+      width: 100%;
+      height: 900px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>✨ Kilka Image Lab</h1>
-            <p>Превращаем слова в картинки!</p>
-        </header>
 
-        <div class="description">
-            <h2>Привет!</h2>
-            <p>Хочу поделиться с тобой крутым инструментом для творчества — Kilka Image Lab. Это персональный генератор изображений прямо в браузере: не нужно скачивать программы или разбираться в сложных настройках.</p>
+<h1>✨ Kilka Image Lab</h1>
+<p>Здесь вы можете использовать встроенный генератор изображений прямо на сайте. Просто введите описание, выберите режим и нажмите «Сгенерировать»!</p>
 
-            <h3>Что умеет Kilka Image Lab?</h3>
-            <ul>
-                <li>Генерирует картинки по текстовому описанию — от реалистичных фото до фантастических миров.</li>
-                <li><strong>«Красноречивая кнопка» (💬)</strong> — улучшает ваш промт: добавляет детали, стилистику и технические параметры, чтобы картинка получилась ярче и детальнее.</li>
-                <li><strong>«Килька думает» (🤔)</strong> — генерирует готовую идею, если у вас нет вдохновения. Больше не нужно мучиться с формулировками!</li>
-            </ul>
+<!-- Встроенный Space на Hugging Face -->
+<iframe src="https://huggingface.co/spaces/ваш_аккаунт/ваш-спейс" title="Kilka Image Lab"></iframe>
 
-            <h3>Три режима генерации на выбор:</h3>
-            <ul>
-                <li><strong>Fast</strong> — быстрая генерация (10 шагов, 384×384 px). Идеально для быстрых набросков и идей.</li>
-                <li><strong>Balance</strong> — баланс качества и скорости (20 шагов, 512×512 px). Оптимальный вариант для большинства задач.</li>
-                <li><strong>Quality</strong> — высокое качество (30 шагов, 768×768 px). Для финальных работ с детальной проработкой.</li>
-            </ul>
+<footer>
+  <p>© 2024 Kilka Image Lab. Создано с ❤️.</p>
+</footer>
 
-            <h3>Как использовать?</h3>
-            <ol>
-                <li>Введите описание изображения в поле ввода.</li>
-                <li>Нажмите «💬 Красноречивая кнопка», чтобы улучшить промт, или «🤔 Килька думает», чтобы получить случайную идею.</li>
-                <li>Выберите режим генерации.</li>
-                <li>Нажмите «🚀 Сгенерировать» и дождитесь результата.</li>
-            </ol>
-        </div>
-
-        <!-- Встроенный интерфейс генерации -->
-        <iframe
-            src="https://huggingface.co/spaces/Kilkavv29/Kilka_image_lab_free_ai"
-            class="space-embed"
-            title="Kilka Image Lab"
-        ></iframe>
-
-        <footer>
-            <p>© 2024 Kilka Image Lab. Создано с ❤️ с использованием Stable Diffusion и Gradio.</p>
-        </footer>
-    </div>
 </body>
 </html>
