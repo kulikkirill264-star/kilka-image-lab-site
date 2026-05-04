@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>OpenAI Chat</title>
+</head>
+<body>
+<h1>Диалог с OpenAI</h1>
+<textarea id="input" rows="4" cols="50" placeholder="Введите сообщение..."></textarea><br/>
+<button id="send">Отправить</button>
+<h2>Ответ:</h2>
+<pre id="response"></pre>
 
+<script>
+document.getElementById('send').onclick = () => {
+  const message = document.getElementById('input').value;
+  fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message }),
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('response').textContent = data.reply;
+  });
+};
+</script>
+</body>
+</html>
