@@ -2,131 +2,44 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<title>OpenAI Chat и генерация изображений</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #fff;
-    margin: 20px;
-  }
-  /* Логотип */
-  #logo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  #logo img {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
-  }
-  #logo h1 {
-    font-size: 24px;
-  }
-  /* Анимация загрузки */
-  #loading {
-    display: none; /* по умолчанию скрыта */
-    margin: 20px 0;
-    text-align: center;
-  }
-  .spinner {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  /* Остальной стиль */
-  textarea {
-    width: 100%;
-    max-width: 600px;
-    height: 100px;
-  }
-  button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #3498db;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-  }
-  button:hover {
-    background-color: #2980b9;
-  }
-  #response {
-    white-space: pre-wrap;
-    background: #222;
-    padding: 10px;
-    margin-top: 20px;
-    max-width: 600px;
-    border-radius: 4px;
-  }
-</style>
+<title>Генерация изображения</title>
 </head>
 <body>
-
-<!-- Логотип -->
-<div id="logo">
-  <img src="https://i.imgur.com/your-logo-url.png" alt="Логотип генератора" />
-  <h1>Генератор AI</h1>
-</div>
-
-<h1>Диалог с OpenAI</h1>
-
-<!-- Кнопка генерации картинки и анимация -->
-<div id="loading">
-  <div class="spinner"></div>
-</div>
-
-<!-- Ввод сообщения -->
-<textarea id="input" placeholder="Введите сообщение..."></textarea><br/>
-<button id="send">Отправить</button>
-
-<!-- Ответ -->
-<h2>Ответ:</h2>
-<pre id="response"></pre>
+<h1>Генерация изображения по тексту</h1>
+<input type="text" id="prompt" placeholder="Введите описание" style="width: 300px;" />
+<button onclick="generateImage()">Создать</button>
+<br><br>
+<img id="result" src="" alt="Generated Image" style="max-width: 100%; height: auto; display: none;" />
 
 <script>
-const sendButton = document.getElementById('send');
-const responsePre = document.getElementById('response');
-const loadingDiv = document.getElementById('loading');
+const apiUrl = 'https://colab.research.google.com/drive/1dpdAa3S3wdqoI2wmZRLh8sHAjA-844qL'; // вставьте сюда ваш URL
 
-sendButton.onclick = () => {
-  const message = document.getElementById('input').value;
-  // Показываем анимацию загрузки
-  loadingDiv.style.display = 'block';
+function generateImage() {
+    const prompt = document.getElementById('prompt').value;
+    if (!prompt) {
+        alert('Пожалуйста, введите описание');
+        return;
+    }
 
-  fetch('/api/chat', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message }),
-  })
-  .then(res => res.json())
-  .then(data => {
-    responsePre.textContent = data.reply;
-  })
-  .catch(err => {
-    responsePre.textContent = 'Произошла ошибка.';
-    console.error(err);
-  })
-  .finally(() => {
-    // Скрываем анимацию
-    loadingDiv.style.display = 'none';
-  });
-};
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({prompt: prompt})
+    })
+    .then(res => res.blob())
+    .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const img = document.getElementById('result');
+        img.src = url;
+        img.style.display = 'block';
+    })
+    .catch(error => {
+        alert('Ошибка при генерации изображения');
+        console.error(error);
+    });
+}
 </script>
-
 </body>
 </html>
